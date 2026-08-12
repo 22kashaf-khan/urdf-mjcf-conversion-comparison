@@ -1,0 +1,70 @@
+<robot name="simple_leg">
+
+  <link name="base_link">
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="thigh_link">
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="shin_link">
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hip_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="thigh_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.05" upper="1.05" effort="100" velocity="10"/>
+  </joint>
+
+  <joint name="knee_joint" type="revolute">
+    <parent link="thigh_link"/>
+    <child link="shin_link"/>
+    <origin xyz="0 0 -0.5"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="0" effort="100" velocity="10"/>
+  </joint>
+
+</robot>

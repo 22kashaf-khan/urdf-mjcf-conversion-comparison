@@ -1,0 +1,17 @@
+<mujoco model="simple_leg">
+  <compiler angle="radian"/>
+
+  <worldbody>
+    <geom size="0.02"/>
+    <body name="thigh_link">
+      <inertial pos="0 0 0" mass="1" diaginertia="0.001 0.001 0.001"/>
+      <joint name="hip_joint" pos="0 0 0" axis="0 1 0" range="-1.05 1.05" actuatorfrcrange="-100 100"/>
+      <geom size="0.05 0.25" type="cylinder"/>
+      <body name="shin_link" pos="0 0 -0.5">
+        <inertial pos="0 0 0" mass="1" diaginertia="0.001 0.001 0.001"/>
+        <joint name="knee_joint" pos="0 0 0" axis="0 1 0" range="-1.57 0" actuatorfrcrange="-100 100"/>
+        <geom size="0.05 0.25" type="cylinder"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
